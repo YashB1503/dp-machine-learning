@@ -22,7 +22,8 @@ with st.expander('Data Visualization'):
   st.scatter_chart(data=df, x='bill_length_mm', y='body_mass_g', color='species')
 
 
-##Data Preperation
+##Input Feature
+
 with st.sidebar:
   st.header('Input Feature')
   #"species","island","bill_length_mm","bill_depth_mm","flipper_length_mm","body_mass_g","sex"
@@ -45,14 +46,21 @@ with st.sidebar:
 
   input_df = pd.DataFrame(data, index = [0])
   input_pengiuns = pd.concat([input_df, X_raw], axis=0)
-  
-  #Encode X
-  encode = ['island', 'sex']
-  df_pengiuns = pd.get_dummies(input_pengiuns, prefix=encode)
-  input_row = df_pengiuns[:1]
 
-  #Encode Y  
-  target_mapper = {
+with st.expander('Input Feature'):
+  st.write('**X**')
+  input_df
+  st.write('**Combined Data**')
+  input_pengiuns
+
+# Data Preperation
+#Encode X
+encode = ['island', 'sex']
+df_pengiuns = pd.get_dummies(input_pengiuns, prefix=encode)
+input_row = df_pengiuns[:1]
+
+#Encode Y  
+target_mapper = {
     'Adelie' : 0,
     'Chinstrap' : 1,
     'Gentoo' : 2
@@ -62,15 +70,12 @@ def target_encode(val):
   return target_mapper[val]
 
 y = y_raw.apply(target_encode)
-y
-y_raw
 
-
-with st.expander('Input Feature'):
-  st.write('**X**')
-  input_df
-  st.write('**Combined Data**')
-  input_pengiuns
-  st.write('**Encoded input pengiuns**')
+with st.expander('Data preperation'):
+  st.write('**Encoded input pengiuns [X]**')
   input_row
+  st.write('**Encoded y**')
+  y
+
+
 
