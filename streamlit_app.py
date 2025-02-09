@@ -50,4 +50,4 @@ with st.expander('Input Feature'):
   st.write('**X**')
   input_df
   st.write('**Combiner Data**')
-  input_penguins
+  input_pengiuns
