@@ -11,12 +11,12 @@ with st.expander('Data'):
   df
 
   st.write('**X**')
-  X = df.drop('species', axis=1)
+  X_raw = df.drop('species', axis=1)
   X
   
   st.write('**Y**')
-  Y = df.species
-  Y
+  y_raw = df.species
+  y
 
 with st.expander('Data Visualization'):
   st.scatter_chart(data=df, x='bill_length_mm', y='body_mass_g', color='species')
@@ -44,11 +44,22 @@ with st.sidebar:
   }
 
   input_df = pd.DataFrame(data, index = [0])
-  input_pengiuns = pd.concat([input_df, X], axis=0)
-  #Encode
+  input_pengiuns = pd.concat([input_df, X_raw], axis=0)
+  
+  #Encode X
   encode = ['island', 'sex']
   df_pengiuns = pd.get_dummies(input_pengiuns, prefix=encode)
   input_row = df_pengiuns[:1]
+
+  #Encode Y  
+  target_mapper = {
+    'Adelie' : 0,
+    'Chinstrap' : 1,
+    'Gentoo' : 2
+  }
+
+def target_encode(val):
+  return target_mapper[val]
 
 with st.expander('Input Feature'):
   st.write('**X**')
