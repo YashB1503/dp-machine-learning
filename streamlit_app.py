@@ -12,11 +12,11 @@ with st.expander('Data'):
 
   st.write('**X**')
   X_raw = df.drop('species', axis=1)
-  X
+  X_raw
   
   st.write('**Y**')
   y_raw = df.species
-  y
+  y_raw
 
 with st.expander('Data Visualization'):
   st.scatter_chart(data=df, x='bill_length_mm', y='body_mass_g', color='species')
