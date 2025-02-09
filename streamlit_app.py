@@ -46,7 +46,7 @@ with st.sidebar:
   input_df = pd.DataFrame(data, index = [0])
   input_pengiuns = pd.concat([input_df, X], axis=0)
 
-with st.slider('Input Feature'):
+with st.expander('Input Feature'):
   st.write('**X**')
   input_df
   st.write('**Combiner Data**')
