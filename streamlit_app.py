@@ -40,7 +40,7 @@ with st.sidebar:
     'bill_depth_mm' : bill_depth_mm,
     'flipper_length_mm' : flipper_length_mm,
     'body_mass_g' : body_mass_g,
-    'gender' : gender
+    'sex' : gender
   }
 
   input_df = pd.DataFrame(data, index = [0])
@@ -49,5 +49,10 @@ with st.sidebar:
 with st.expander('Input Feature'):
   st.write('**X**')
   input_df
-  st.write('**Combiner Data**')
+  st.write('**Combined Data**')
   input_pengiuns
+
+#Encode
+encode = ['island', 'sex']
+df_pengiuns = pd.get_dummies(input_pengiuns, prefix=encode)
+df_pengiuns[:1]
