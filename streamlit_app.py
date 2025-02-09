@@ -95,6 +95,6 @@ df_predection_proba.rename(columns = {0 : 'Adelie',
                                    2 : 'Gentoo'
                                   })
 #df_predection_proba
-st.sunheader('Predected Species')
+st.subheader('Predected Species')
 pengiune_species = np.array(['Adelie', 'Chinstrap', 'Gentoo'])
 st.sucess(str(pengiune_species[predection][0]))
