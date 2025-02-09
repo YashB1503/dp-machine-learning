@@ -45,4 +45,9 @@ with st.sidebar:
 
   input_df = pd.DataFrame(data, index = [0])
   input_pengiuns = pd.concat([input_df, X], axis=0)
-input_df
+
+with st.slider('Input Feature'):
+  st.write('**X**')
+  input_df
+  st.write('**Combiner Data**')
+  input_penguins
